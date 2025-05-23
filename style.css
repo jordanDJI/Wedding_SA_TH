@@ -1,0 +1,253 @@
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: black;
+  color: #fff;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('sth.jpg'); /* mets le bon nom */
+  background-repeat: repeat-x;
+  background-position: center top;
+  background-size: auto 100%;
+  background-attachment: fixed;
+  /*opacity: 1;  contrôle de la transparence de l’image */
+  z-index: -1;
+}
+
+.form-wrapper {
+  background: rgba(0, 0, 0, 0.4);  /* ✅ voile noir transparent */
+  backdrop-filter: blur(8px);     /* ✅ effet de flou de fond */
+  -webkit-backdrop-filter: blur(8px); /* compatibilité Safari */
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.form-container {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+@font-face {
+  font-family: 'Panda Script';
+  src: url('Panda-116584896/Panda.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.nom_marie .nom_marie{
+  font-size: 3rem;
+  font-family: 'Panda Script', cursive;
+  text-align: center;
+  margin-bottom: -0.5rem;
+}
+
+.date {
+  font-size: 2rem;
+  text-align: center;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-bottom: -0.5rem;
+}
+
+.Invitation_text {
+  font-size: 2rem;
+  text-align: center;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-bottom: 1rem;
+}
+
+.privacy{
+    font-weight: 50;
+  text-align: center;
+  font-style: italic;
+  opacity: 0.9;
+  padding-top: 1rem;
+}
+
+
+.form-container .date {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.form-container p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  text-align: center;
+  margin-bottom: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 10px;
+  border: none;
+  margin-top: 0.3rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.card-section {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.check-form {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0,1rem;
+  margin-bottom: 0,2rem;
+}
+
+.form-wrapper{
+    border-color: #964D3E;
+    border-width: 2px;
+    border-style: solid;
+}
+
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+fieldset {
+  border: none;
+  margin-bottom: -0,5rem;
+  padding: 0;
+    border: none;
+
+}
+
+.card-header legend {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0,2rem;
+}
+
+.card-header p {
+  text-align: left;
+}
+
+.event-date {
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffc107;
+    background-color: rgba(255, 255, 255, 0.319);
+    padding: 1rem;
+    min-width: 50px;
+    border-width: 3px;
+    border-style: solid;   
+    border-color:#964D3E;
+    border-radius: 6px;
+}
+
+.event-date .month {
+  font-size: 0.8rem;
+  color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.event-date .day {
+  font-size: 1.5rem;
+  color: #ffc107;
+    font-weight: bold;
+}
+
+.event-date .year {
+  font-size: 0.8rem;
+  color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+legend {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color:#fff
+}
+
+button[type="submit"] {
+  background-color: #ffc107;
+  color: #000;
+  font-weight: bold;
+  padding: 0.75rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #ffb300;
+}

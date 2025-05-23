@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Invitation au mariage de Laminine & Thierry Calvani le 29 octobre 2025. Confirmez votre présence ici." />
+  <title>RSVP Mariage - Samininirina & Thierry</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="overlay">
+    <div class="form-container">
+      <div class="nom_marie"><p class="nom_marie">Samininirina & Thierry Calvani</p></div>
+      <div class="date">29 octobre 2025</div>
+      <p class=" Invitation_text">Merci de bien vouloir répondre à ces quelques questions pour nous aider à organiser notre mariage, nous sommes impassient de vous retrouver !</p>
+      <p class="privacy">Toutes les informations renseignées dans ce formulaire resteront privées et seront partagées uniquement à<br> Saminirina & Thierry</p>
+
+        <div class="form-wrapper">
+            <form id="rsvp-form" action="..." method="POST">
+                <label>
+                Prénom*<br />
+                <input type="text" name="prenom" required />
+                </label>
+                <label>
+                Nom*<br />
+                <input type="text" name="nom" required />
+                </label>
+                <label>
+                Email*<br />
+                <input type="email" name="email" required />
+                </label>
+
+                <div class="card-section">
+                    <div class="card-header">
+                        <div class="event-date">
+                            <span class="month">OCT</span>
+                            <span class="day">29</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <fieldset>
+                            <legend>Cérémonie de mariage <br></legend>
+                            <p>Espace Les collonades sortie<br>
+                            Village Manandosa by Pass (coté lavoloha), 2G6W+P87, Antananarivo, Madagascar</p>
+                            <h3>Serez-vous présent?</h3>
+                            <div class="check-form">
+                                <label><input type="radio" name="presence_ceremonie" value="Oui" required /> Oui</label>
+                                <label><input type="radio" name="presence_ceremonie" value="Non" /> Non</label>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="card-section">
+                    <div class="card-header">
+                        <div class="event-date">
+                            <span class="month">OCT</span>
+                            <span class="day">29</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <fieldset>
+                            <legend>Cérémonie de mariage <br></legend>
+                            <p>Espace Les collonades sortie<br>
+                            Village Manandosa by Pass (coté lavoloha), 2G6W+P87, Antananarivo, Madagascar</p>
+                            <h3>Serez-vous présent?</h3>
+                            <div class="check-form">
+                                <label><input type="radio" name="presence_soiree" value="Oui" required /> Oui</label>
+                                <label><input type="radio" name="presence_soiree" value="Non" /> Non</label>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <label>
+                Nombre d'accompagnants*<br />
+                <input type="number" id="accompagnants" name="accompagnants" min="0" value="0" required />
+                </label>
+
+                <div id="accompagnants-details"></div>
+
+                <label>
+                Musique préférée<br />
+                <textarea name="musique"></textarea>
+                </label>
+
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+    </div>
+
+  <script>
+    const form = document.getElementById('rsvp-form');
+    const accompagnantsInput = document.getElementById('accompagnants');
+    const accompagnantsDetails = document.getElementById('accompagnants-details');
+
+    accompagnantsInput.addEventListener('input', function () {
+      const count = parseInt(this.value) || 0;
+      accompagnantsDetails.innerHTML = '';
+      for (let i = 1; i <= count; i++) {
+        const card = document.createElement('div');
+        card.className = 'card-section';
+        card.innerHTML = `
+          <fieldset>
+            <legend>Accompagnant ${i}</legend>
+            <label>Prénom<br /><input type="text" name="accompagnant_prenom_${i}" required></label>
+            <label>Nom<br /><input type="text" name="accompagnant_nom_${i}" required></label>
+          </fieldset>
+        `;
+        accompagnantsDetails.appendChild(card);
+      }
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(this).entries());
+      fetch('https://script.google.com/macros/s/https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbxI9v8jEX-3xIpyoviaSyXk1V2BwzKTUE6bXOEHBsmrhXZ9GlSSMCtiadff8I0QGi5Ycw/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+        .then(res => res.text())
+        .then(() => alert('Données envoyées !'))
+        .catch(() => alert("Erreur lors de l'envoi"));
+    });
+  </script>
+</body>
+</html>
+
