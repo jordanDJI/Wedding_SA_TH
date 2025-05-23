@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -16,26 +15,26 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('sth.jpg'); /* mets le bon nom */
+  background-image: url('sth.jpg');
   background-repeat: repeat-x;
   background-position: center top;
   background-size: auto 100%;
   background-attachment: fixed;
-  /*opacity: 1;  contrôle de la transparence de l’image */
   z-index: -1;
+  opacity: 0.8; /* rendu plus visible */
 }
 
 .form-wrapper {
-  background: rgba(0, 0, 0, 0.4);  /* ✅ voile noir transparent */
-  backdrop-filter: blur(8px);     /* ✅ effet de flou de fond */
-  -webkit-backdrop-filter: blur(8px); /* compatibilité Safari */
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   max-width: 800px;
   margin: 2rem auto;
+  border: 2px solid #964D3E;
 }
-
 
 .overlay {
   background: rgba(0, 0, 0, 0.5);
@@ -56,13 +55,6 @@ body::before {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-@font-face {
-  font-family: 'Panda Script';
-  src: url('Panda-116584896/Panda.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .nom_marie .nom_marie{
   font-size: 3rem;
   font-family: 'Panda Script', cursive;
@@ -70,43 +62,21 @@ body::before {
   margin-bottom: -0.5rem;
 }
 
-.date {
-  font-size: 2rem;
-  text-align: center;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  margin-bottom: -0.5rem;
-}
-
+.date,
 .Invitation_text {
   font-size: 2rem;
   text-align: center;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   margin-bottom: 1rem;
 }
 
-.privacy{
-    font-weight: 50;
+.privacy {
+  font-weight: 50;
   text-align: center;
   font-style: italic;
   opacity: 0.9;
   padding-top: 1rem;
 }
-
-
-.form-container .date {
-  font-size: 1.2rem;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.form-container p {
-  font-size: 1rem;
-  margin: 0.5rem 0;
-  text-align: center;
-  margin-bottom: -0.5rem;
-  margin-top: -0.5rem;
-}
-
 
 form {
   display: flex;
@@ -150,41 +120,27 @@ textarea:focus {
   border-radius: 15px;
   position: relative;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
 }
 
 .check-form {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1.5rem;
-  padding: 0,1rem;
-  margin-bottom: 0,2rem;
-}
-
-.form-wrapper{
-    border-color: #964D3E;
-    border-width: 2px;
-    border-style: solid;
-}
-
-
-.card-header {
-  display: flex;
-  align-items: flex-start;
   margin-bottom: 1rem;
 }
 
 fieldset {
   border: none;
-  margin-bottom: -0,5rem;
+  margin-bottom: 1rem;
   padding: 0;
-    border: none;
-
 }
 
 .card-header legend {
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 0,2rem;
+  margin-bottom: 0.5rem;
 }
 
 .card-header p {
@@ -194,47 +150,40 @@ fieldset {
 .event-date {
   display: flex;
   flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-right: 1rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffc107;
-    background-color: rgba(255, 255, 255, 0.319);
-    padding: 1rem;
-    min-width: 50px;
-    border-width: 3px;
-    border-style: solid;   
-    border-color:#964D3E;
-    border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffc107;
+  background-color: rgba(255, 255, 255, 0.319);
+  padding: 1rem;
+  min-width: 50px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #964D3E;
+  border-radius: 6px;
 }
 
-.event-date .month {
+.event-date .month,
+.event-date .year {
   font-size: 0.8rem;
   color: #fff;
-    font-weight: bold;
-    text-transform: uppercase;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .event-date .day {
   font-size: 1.5rem;
   color: #ffc107;
-    font-weight: bold;
+  font-weight: bold;
 }
-
-.event-date .year {
-  font-size: 0.8rem;
-  color: #fff;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
 
 legend {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
   font-weight: bold;
-  color:#fff
+  color: #fff;
 }
 
 button[type="submit"] {
@@ -250,4 +199,46 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #ffb300;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-wrapper,
+  .form-container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .nom_marie .nom_marie {
+    font-size: 2rem;
+  }
+
+  .date,
+  .Invitation_text {
+    font-size: 1.2rem;
+  }
+
+  .event-date {
+    margin: 0 auto 1rem;
+  }
+
+  .check-form {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  textarea {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  button[type="submit"] {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
 }
