@@ -18,11 +18,30 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: url('sth.jpg');
-  background-repeat: repeat-x;
-  background-position: center top;
+  background-repeat: no-repeat;
+  background-position: center center;
   background-size: cover;
   background-attachment: fixed;
   z-index: -1;
+  
+  /* Optimisation pour image portrait */
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Adaptation pour les écrans larges (landscape) */
+@media (orientation: landscape) {
+  body::before {
+    background-size: contain;
+    background-color: #000; /* Ajoute un fond uni pour les parties non couvertes */
+  }
+}
+
+/* Pour les très grands écrans */
+@media (min-width: 1600px) {
+  body::before {
+    background-size: 100% auto;
+  }
 }
 
 /* Conteneurs principaux */
