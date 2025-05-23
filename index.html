@@ -87,41 +87,58 @@
         </div>
     </div>
 
-  <script>
-    const form = document.getElementById('rsvp-form');
-    const accompagnantsInput = document.getElementById('accompagnants');
-    const accompagnantsDetails = document.getElementById('accompagnants-details');
+    <script>
+        const form = document.getElementById('rsvp-form');
+        const accompagnantsInput = document.getElementById('accompagnants');
+        const accompagnantsDetails = document.getElementById('accompagnants-details');
+        sheet='https://sheetdb.io/api/v1/wts09zzqgp54d'
+        accompagnantsInput.addEventListener('input', function () {
+        const count = parseInt(this.value) || 0;
+        accompagnantsDetails.innerHTML = '';
+        for (let i = 1; i <= count; i++) {
+            const card = document.createElement('div');
+            card.className = 'card-section';
+            card.innerHTML = `
+            <fieldset>
+                <legend>Accompagnant ${i}</legend>
+                <label>Prénom<br /><input type="text" name="accompagnant_prenom_${i}" required></label>
+                <label>Nom<br /><input type="text" name="accompagnant_nom_${i}" required></label>
+            </fieldset>
+            `;
+            accompagnantsDetails.appendChild(card);
+        }
+        });
 
-    accompagnantsInput.addEventListener('input', function () {
-      const count = parseInt(this.value) || 0;
-      accompagnantsDetails.innerHTML = '';
-      for (let i = 1; i <= count; i++) {
-        const card = document.createElement('div');
-        card.className = 'card-section';
-        card.innerHTML = `
-          <fieldset>
-            <legend>Accompagnant ${i}</legend>
-            <label>Prénom<br /><input type="text" name="accompagnant_prenom_${i}" required></label>
-            <label>Nom<br /><input type="text" name="accompagnant_nom_${i}" required></label>
-          </fieldset>
-        `;
-        accompagnantsDetails.appendChild(card);
-      }
-    });
+        const statusMessage = document.createElement('p');
+        form.appendChild(statusMessage);
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(this).entries());
-      fetch('https://script.google.com/macros/s/https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbxI9v8jEX-3xIpyoviaSyXk1V2BwzKTUE6bXOEHBsmrhXZ9GlSSMCtiadff8I0QGi5Ycw/exec', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      })
-        .then(res => res.text())
-        .then(() => alert('Données envoyées !'))
-        .catch(() => alert("Erreur lors de l'envoi"));
-    });
-  </script>
+        form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        statusMessage.textContent = "Envoi en cours...";
+        statusMessage.style.color = "white";
+        const data= Object.fromEntries(new FormData(this).entries())
+
+        fetch(sheet, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ data: data }),
+        })
+            .then(res => {
+            if (!res.ok) throw new Error("Erreur serveur");
+            return res.text();
+            })
+            .then(() => {
+            statusMessage.textContent = "Données envoyées avec succès ! Merci.";
+            statusMessage.style.color = "lime";
+            form.reset();
+            })
+            .catch(() => {
+            statusMessage.textContent = "Erreur lors de l'envoi, veuillez réessayer.";
+            statusMessage.style.color = "red";
+            });
+        });
+        ;
+    </script>
 </body>
 </html>
 
