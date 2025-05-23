@@ -156,6 +156,19 @@ body::before {
   text-transform: uppercase;
 }
 
+legend {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+fieldset {
+  border:#964D3E solid 2px;
+  border-radius: 10px;
+}
+
 /* Formulaires */
 form {
   display: flex;
